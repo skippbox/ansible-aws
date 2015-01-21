@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+
+  - name: Start head-node VM
+    local_action:
+      module: cloudstack_vm
+      name: head-node1
+      template: Linux Ubuntu 14.04 LTS 64-bit
+      service_offering: Tiny
+      ssh_key: k8s
+      user_data: "{{ lookup('file', './userdata.yml') }}"

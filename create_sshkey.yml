@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+
+  - name: Create SSH Key
+    local_action:
+      module: cloudstack_sshkey
+      name: k8s
+    register: key
+
+  - debug: msg='private key is {{ key.private_key }}'
+ 
+  - local_action: copy content="{{ key.private_key }}" dest="~/.ssh/id_rsa_k8s"
+
+  - file: path="~/.ssh/id_rsa_k8s" mode=0600
