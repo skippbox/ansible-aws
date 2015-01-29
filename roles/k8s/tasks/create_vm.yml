@@ -1,8 +1,9 @@
   - name: Start head-node VM
     local_action:
       module: cloudstack_vm
-      name: head-node1
+      name: k8s-node-{{ item }}
       template: Linux Ubuntu 14.04 LTS 64-bit
       service_offering: Tiny
-      ssh_key: k8s
+      ssh_key: "{{ ssh_key }}"
       user_data: "{{ lookup('file', '../files/k8s.yml') }}"
+    with_sequence: count={{ k8s_num_nodes }}
