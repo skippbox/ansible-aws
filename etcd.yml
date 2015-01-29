@@ -1,5 +1,18 @@
 ---
 - hosts: localhost
   connection: local
+  vars:
+    ssh_key: etcd
+    etcd_num_nodes: 3
+    etcd_security_group_name: etcd
+
+  pre_tasks:
+    - name: Get bootstrap token for etcd
+      command: curl -w "\n" https://discovery.etcd.io/new
+      register: token
+    - debug: msg='Etcd token is {{ token.stdout }}'
+    - copy: content="{{ token }}" dest=/Users/sebastiengoasguen/Documents/gitforks/ansible-kubernetes/toto.txt
+    
   roles:
+    - common
     - etcd

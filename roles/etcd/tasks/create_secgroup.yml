@@ -3,5 +3,5 @@
   - name: Create etcd Security Group
     local_action:
      module: cloudstack_sg
-     name: etcd
+     name: "{{ etcd_security_group_name }}"
      description: etcd 

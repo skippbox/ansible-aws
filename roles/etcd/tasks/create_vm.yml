@@ -1,0 +1,9 @@
+  - name: Start etcd nodes
+    local_action:
+      module: cloudstack_vm
+      name: etcd-node-{{ item }}
+      template: Linux Ubuntu 14.04 LTS 64-bit
+      service_offering: Tiny
+      ssh_key: "{{ ssh_key }}"
+      user_data: "{{ lookup('file', '../files/etcd.yml') }}"
+    with_sequence: count={{ etcd_num_nodes }}

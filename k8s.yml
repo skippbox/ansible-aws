@@ -1,5 +1,9 @@
 ---
 - hosts: localhost
   connection: local
+  vars:
+    - k8s_ssh_key: k8s
+    - k8s_num_nodes: 5
+    - k8s_security_group_name: k8s
   roles:
     - k8s
