@@ -1,4 +1,3 @@
-  - debug: msg=' etcd token is {{ token.stdout }}'
   - name: Create SSH Key
     local_action:
       module: cloudstack_sshkey
