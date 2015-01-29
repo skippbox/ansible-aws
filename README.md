@@ -5,18 +5,26 @@ Basic recipes using the ansible cloudstack module to create ssh keys, sec group 
 
 Very early work...
 
+You will need Ansible and [cs](https://github.com/exoscale/cs) :)
+
+    $ sudo apt-get install -y python-pip
+    $ sudo pip install ansible
+    $ sudo pip install cs
+
 Clone recursive
 ---------------
 
     $ git clone --recursive https://github.com/runseb/ansible-kubernetes.git
+    $ cd ansible-kubernetes
 
 There is a submodule in there.
-
 
 Create etcd cluster
 -------------------
 
     $ ansible-playbook etcd.yml
+
+Edit some of the variables in the `etcd.yml` file directly.
 
 Dependencies
 ------------
