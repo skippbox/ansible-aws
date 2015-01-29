@@ -1,0 +1,7 @@
+# Create k8s security group
+
+  - name: Create k8s Security Group
+    local_action:
+     module: cloudstack_sg
+     name: k8s 
+     description: k8s 

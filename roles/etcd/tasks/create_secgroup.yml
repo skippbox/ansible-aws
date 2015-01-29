@@ -1,0 +1,7 @@
+# Create Backend security group
+
+  - name: Create etcd Security Group
+    local_action:
+     module: cloudstack_sg
+     name: etcd
+     description: etcd 
