@@ -22,5 +22,6 @@ Dependencies
 ------------
 
 This depends on the Ansible cloudstack [module](https://github.com/resmo/ansible-cloudstack). It is loaded in this repo as a git submodule.
-This module depends on [cs](https://github.com/exoscale/cs), this module will look for the CLOUDSTACK_ENDPOINT, CLOUDSTACK_KEY, CLOUDSTACK_SECRET and CLOUDSTACK_METHOD environment variables.
+
+This module depends on [cs](https://github.com/exoscale/cs), this module will look for the `CLOUDSTACK_ENDPOINT`, `CLOUDSTACK_KEY`, `CLOUDSTACK_SECRET` and `CLOUDSTACK_METHOD` environment variables.
 
