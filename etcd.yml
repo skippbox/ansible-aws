@@ -1,10 +1,14 @@
 ---
 - hosts: localhost
   connection: local
+
   vars:
     ssh_key: etcd
     etcd_num_nodes: 3
     etcd_security_group_name: etcd
+    etcd_node_prefix: etcda
+    etcd_template: Linux CoreOS alpha 435 64-bit 10GB Disk 
+    etcd_instance_type: Tiny
 
   pre_tasks:
     - name: Get bootstrap token for etcd

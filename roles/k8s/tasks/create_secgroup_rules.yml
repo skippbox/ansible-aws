@@ -1,3 +1,13 @@
+# Add Rule to etcd security group
+
+#  - name: etcd access for k8s
+#    local_action:
+#     module: cloudstack_sg_rule
+#     name: "{{ etcd_security_group_name }}"
+#     start_port: 4001
+#     end_port: 4001
+#     user_security_group: "{{ k8s_security_group_name }}"
+
 # Rules for the k8s security group
 
   - name: SSH for k8s
