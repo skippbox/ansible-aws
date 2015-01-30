@@ -2,9 +2,8 @@
 - hosts: localhost
   connection: local
   vars:
-    ssh_key: k8ss
+    ssh_key: k8s
     aws_region: eu-west-1
-    vpc_subnet_id: subnet-d9f753bc 
     k8s_num_nodes: 2
     k8s_security_group_name: k8s
     k8s_node_prefix: k8s2
