@@ -1,2 +1,4 @@
 [default]
 localhost ansible_python_interpreter=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/python
+
+[nodes]

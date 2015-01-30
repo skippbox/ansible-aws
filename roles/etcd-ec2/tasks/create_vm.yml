@@ -1,0 +1,9 @@
+  - name: Start etcd nodes
+    local_action:
+      module: cloudstack_vm
+      name: "{{ etcd_node_prefix }}-node-{{ item }}"
+      template: "{{ etcd_template }}"
+      service_offering: "{{ etcd_instance_type }}"
+      ssh_key: "{{ ssh_key }}"
+      user_data: "{{ lookup('template', '../templates/etcd.j2') }}"
+    with_sequence: count={{ etcd_num_nodes }}

@@ -1,0 +1,33 @@
+# Rules for the etcd security group
+
+  - name: SSH for etcd
+    local_action:
+     module: cloudstack_sg_rule
+     name: "{{ etcd_security_group_name }}"
+     start_port: 22
+     end_port: 22
+
+  - name: etcd 4001
+    local_action:
+     module: cloudstack_sg_rule
+     name: "{{ etcd_security_group_name }}"
+     start_port: 4001
+     end_port: 4001
+     user_security_group: "{{ etcd_security_group_name }}"
+
+  - name: etcd 7001
+    local_action:
+     module: cloudstack_sg_rule
+     name: "{{ etcd_security_group_name }}"
+     start_port: 7001
+     end_port: 7001
+     user_security_group: "{{ etcd_security_group_name }}"
+
+#  - name: k8s 4001
+#    local_action:
+#     module: cloudstack_sg_rule
+#     name: "{{ etcd_security_group_name }}"
+#     start_port: 4001
+#     end_port: 4001
+#     user_security_group: "{{ k8s_security_group_name }}"
+
