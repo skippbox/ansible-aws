@@ -1,9 +1,14 @@
   - name: Start etcd nodes
-    local_action:
-      module: cloudstack_vm
-      name: "{{ etcd_node_prefix }}-node-{{ item }}"
-      template: "{{ etcd_template }}"
-      service_offering: "{{ etcd_instance_type }}"
-      ssh_key: "{{ ssh_key }}"
+    ec2:
+      region: "{{ aws_region }}"
+      image: "{{ etcd_template }}"
+      instance_type: "{{ etcd_instance_type }}"
+      key_name: "{{ ssh_key }}"
+      group: "{{ etcd_security_group_name }}"
       user_data: "{{ lookup('template', '../templates/etcd.j2') }}"
-    with_sequence: count={{ etcd_num_nodes }}
+      count: "{{ etcd_num_nodes }}"
+      wait: yes
+    register: ec2
+    
+  - debug: msg='etcd node IP is {{ item.public_ip }}'
+    with_items: ec2.instances

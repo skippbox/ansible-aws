@@ -5,8 +5,8 @@ coreos:
     metadata: role=etcd
   etcd:
     discovery: "{{ token.stdout }}" 
-    addr: $public_ipv4:4001
-    peer-addr: $public_ipv4:7001
+    addr: $private_ipv4:4001
+    peer-addr: $private_ipv4:7001
     snapshot: true
   units:
     - name: etcd.service
