@@ -3,6 +3,9 @@ Ansible Recipes to Install Kubernetes
 
 Basic recipes using the ansible cloudstack module to create ssh keys, sec group etc and deploy [Kubernetes](http://kubernetes.io) on [CoreOS](http://coreos.com).
 
+Prerequisites
+-------------
+
 You will need Ansible and [cs](https://github.com/exoscale/cs) :)
 
     $ sudo apt-get install -y python-pip

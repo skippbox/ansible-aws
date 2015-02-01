@@ -6,10 +6,9 @@
     aws_region: eu-west-1
     k8s_num_nodes: 2
     k8s_security_group_name: k8s
-    k8s_node_prefix: k8s2
-    k8s_template: Linux CoreOS alpha 435 64-bit 10GB Disk
-    k8s_instance_type: Tiny
+    k8s_template: ami-7bf27e0c 
+    k8s_instance_type: m1.small
 
   roles:
-    - common
-    - k8s
+    - common-ec2
+    - k8s-ec2

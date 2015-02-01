@@ -7,9 +7,8 @@
     aws_region: eu-west-1
     etcd_num_nodes: 3
     etcd_security_group_name: etcd
-    etcd_node_prefix: etcd
-    etcd_template: Linux CoreOS alpha 435 64-bit 10GB Disk 
-    etcd_instance_type: Tiny
+    etcd_template: ami-7bf27e0c 
+    etcd_instance_type: m1.small
 
   pre_tasks:
     - name: Get bootstrap token for etcd
@@ -18,5 +17,5 @@
     - debug: msg='Etcd token is {{ token.stdout }}'
     
   roles:
-    - common
-    - etcd
+    - common-ec2
+    - etcd-ec2
