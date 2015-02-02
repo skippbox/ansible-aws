@@ -4,7 +4,6 @@
 
   vars:
     ssh_key: etcd
-    aws_region: eu-west-1
     etcd_num_nodes: 3
     etcd_security_group_name: etcd
     etcd_node_prefix: etcd
