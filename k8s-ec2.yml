@@ -6,7 +6,7 @@
     aws_region: eu-west-1
     k8s_num_nodes: 2
     k8s_security_group_name: k8s
-    k8s_template: ami-7bf27e0c 
+    k8s_template: ami-5b911f2c 
     k8s_instance_type: m1.small
 
   roles:

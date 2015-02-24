@@ -5,6 +5,7 @@
       template: "{{ k8s_template }}"
       service_offering: "{{ k8s_instance_type }}"
       ssh_key: "{{ ssh_key }}"
+      security_groups: [ '{{ k8s_security_group_name }}' ]
       user_data: "{{ lookup('file', '../files/k8s-master.yml') }}"
     register: k8s_master
     
@@ -17,5 +18,6 @@
       template: "{{ k8s_template }}"
       service_offering: "{{ k8s_instance_type }}"
       ssh_key: "{{ ssh_key }}"
+      security_groups: [ '{{ k8s_security_group_name }}' ]
       user_data: "{{ lookup('template', '../templates/k8s-node.j2') }}"
     with_sequence: count={{ k8s_num_nodes }}
