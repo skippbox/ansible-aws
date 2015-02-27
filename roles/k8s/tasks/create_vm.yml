@@ -6,7 +6,7 @@
       service_offering: "{{ k8s_instance_type }}"
       ssh_key: "{{ ssh_key }}"
       security_groups: [ '{{ k8s_security_group_name }}' ]
-      user_data: "{{ lookup('file', '../files/k8s-master.yml') }}"
+      user_data: "{{ lookup('template', '../templates/k8s-master.j2') }}"
     register: k8s_master
     
   - debug: msg='k8s master IP is {{ k8s_master.default_ip }}'
@@ -21,3 +21,4 @@
       security_groups: [ '{{ k8s_security_group_name }}' ]
       user_data: "{{ lookup('template', '../templates/k8s-node.j2') }}"
     with_sequence: count={{ k8s_num_nodes }}
+    register: k8s_nodes

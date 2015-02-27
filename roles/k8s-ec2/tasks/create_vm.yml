@@ -5,7 +5,7 @@
       instance_type: "{{ k8s_instance_type }}"
       key_name: "{{ ssh_key }}"
       group: "{{ k8s_security_group_name }}"
-      user_data: "{{ lookup('file', '../files/k8s-master.yml') }}"
+      user_data: "{{ lookup('template', '../templates/k8s-master.yml') }}"
       wait: yes
     register: k8s_master
  

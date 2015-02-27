@@ -4,9 +4,10 @@
   vars:
     ssh_key: k8s
     k8s_version: v0.11.0
-    k8s_num_nodes: 4
+    k8s_num_nodes: 2
     k8s_security_group_name: k8s
     k8s_node_prefix: k8s
+# This template name is specific to http://exoscale.ch, replace it
     k8s_template: Linux CoreOS alpha 435 64-bit 10GB Disk
     k8s_instance_type: Tiny
 
