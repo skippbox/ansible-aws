@@ -1,6 +1,6 @@
   - name: Start k8s head node
     local_action:
-      module: cloudstack_vm
+      module: cs_instance
       name: "{{ k8s_node_prefix }}-head"
       template: "{{ k8s_template }}"
       service_offering: "{{ k8s_instance_type }}"
@@ -13,7 +13,7 @@
               
   - name: Start k8s nodes
     local_action:
-      module: cloudstack_vm
+      module: cs_instance
       name: "{{ k8s_node_prefix }}-node-{{ item }}"
       template: "{{ k8s_template }}"
       service_offering: "{{ k8s_instance_type }}"
