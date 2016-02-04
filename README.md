@@ -1,19 +1,21 @@
-Ansible Recipes to Install Kubernetes
-=====================================
+Ansible Recipes to Install a development Kubernetes cluster
+===========================================================
 
 Basic recipes using the ansible cloudstack module to create ssh keys, sec group etc and deploy [Kubernetes](http://kubernetes.io) on [CoreOS](http://coreos.com).
+This setup is to be used for development purposes only, as there are no HA features in place.
 
 Prerequisites
 -------------
 
-You will need Ansible and [cs](https://github.com/exoscale/cs) :)
+You will need Ansible >= 2.0, sshpubkeys and [cs](https://github.com/exoscale/cs) :)
 
     $ sudo apt-get install -y python-pip
     $ sudo pip install ansible
     $ sudo pip install cs
+    $ sudo pip install sshpubkeys
 
-Setup cs
---------
+Setup cloudstack
+----------------
 
 Create a `~/.cloudstack.ini` file with your creds and cloudstack endpoint:
 
@@ -24,14 +26,6 @@ Create a `~/.cloudstack.ini` file with your creds and cloudstack endpoint:
     method = post
 
 We need to use the http POST method to pass the userdata to the coreOS instances.
-
-Clone recursive
----------------
-
-    $ git clone --recursive https://github.com/runseb/ansible-kubernetes.git
-    $ cd ansible-kubernetes
-
-There is the [ansible-cloudstack](https://github.com/resmo/ansible-cloudstack) submodule in there.
 
 Create a Kubernetes cluster
 ---------------------------
@@ -44,19 +38,6 @@ This is all setup via coreOS instances and passing userdata.
 
 Check the tasks and templates in `roles/k8s`
 
-Create etcd cluster
--------------------
 
-That's a bonus to this work, there is a playbook to create an independent etcd cluster.
 
-    $ ansible-playbook etcd.yml
-
-Edit some of the variables in the `etcd.yml` file directly.
-
-Dependencies
-------------
-
-This depends on the Ansible cloudstack [module](https://github.com/resmo/ansible-cloudstack). It is loaded in this repo as a git submodule.
-
-This module depends on [cs](https://github.com/exoscale/cs), this module will look for the `CLOUDSTACK_ENDPOINT`, `CLOUDSTACK_KEY`, `CLOUDSTACK_SECRET` and `CLOUDSTACK_METHOD` environment variables.
 
