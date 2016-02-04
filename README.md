@@ -1,5 +1,5 @@
-Ansible Recipes to Install a development Kubernetes cluster
-===========================================================
+Ansible playbook to install a development Kubernetes (k8s) cluster
+==================================================================
 
 Basic recipes using the ansible cloudstack module to create ssh keys, sec group etc and deploy [Kubernetes](http://kubernetes.io) on [CoreOS](http://coreos.com).
 This setup is to be used for development purposes only, as there are no HA features in place.
@@ -20,7 +20,7 @@ Setup cloudstack
 Create a `~/.cloudstack.ini` file with your creds and cloudstack endpoint:
 
     [cloudstack]
-    endpoint = <your cloudstack api endpoint>
+    endpoint = https://api.exoscale.ch/compute
     key = <your api access key> 
     secret = <your api secret key> 
     method = post
@@ -34,7 +34,6 @@ Create a Kubernetes cluster
 
 Some variables can be edited in the `k8s.yml` file.
 This will start a Kubernetes master node and a number of compute nodes.
-This is all setup via coreOS instances and passing userdata.
 
 Check the tasks and templates in `roles/k8s`
 
