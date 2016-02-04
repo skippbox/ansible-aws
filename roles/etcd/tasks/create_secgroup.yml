@@ -1,7 +1,0 @@
-# Create Backend security group
-
-  - name: Create etcd Security Group
-    local_action:
-     module: cs_securitygroup
-     name: "{{ etcd_security_group_name }}"
-     description: etcd 
