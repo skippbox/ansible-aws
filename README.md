@@ -7,11 +7,10 @@ This setup is to be used for development purposes only, as there are no HA featu
 Prerequisites
 -------------
 
-You will need Ansible >= 2.0, sshpubkeys and [cs](https://github.com/exoscale/cs) :)
+You will need Ansible >= 2.0, sshpubkeys and boto 
 
     $ sudo apt-get install -y python-pip
-    $ sudo pip install ansible
-    $ sudo pip install sshpubkeys
+    $ pip install ansible sshpubkeys boto
 
 Setup ec2
 ---------
@@ -30,6 +29,13 @@ Create a Kubernetes cluster
 
 Some variables can be edited in the `k8s-ec2.yml` file.
 This will start a Kubernetes master node and a number of compute nodes.
+
+Test your cluster
+-----------------
+
+First spawn a tunnel to your master node with:
+
+    $ ssh -nNT -L 8080:127.0.0.1:8080 -i ~/.ssh/id_rsa_k8s core@<master-node-ip>
 
 Check the tasks and templates in `roles/k8s`
 
