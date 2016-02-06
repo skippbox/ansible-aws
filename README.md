@@ -37,7 +37,10 @@ First spawn a tunnel to your master node with:
 
     $ ssh -nNT -L 8080:127.0.0.1:8080 -i ~/.ssh/id_rsa_k8s core@<master-node-ip>
 
-Check the tasks and templates in `roles/k8s`
+Then run
+
+    $ kubectl get nodes
+
 
 
 
