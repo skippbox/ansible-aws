@@ -35,7 +35,18 @@ Create a Kubernetes cluster
 Some variables can be edited in the `k8s.yml` file.
 This will start a Kubernetes master node and a number of compute nodes.
 
-Check the tasks and templates in `roles/k8s`
+Check the tasks and templates in `roles/k8s`.
+
+Test your cluster
+-----------------
+
+First spawn a tunnel to your master node with:
+
+    $ ssh -nNT -L 8080:127.0.0.1:8080 -i ~/.ssh/id_rsa_k8s core@<master-node-ip>
+
+Then run
+
+    $ kubectl get nodes
 
 
 
