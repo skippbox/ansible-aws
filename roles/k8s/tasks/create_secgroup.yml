@@ -1,7 +1,0 @@
-# Create k8s security group
-
-  - name: Create k8s Security Group
-    local_action:
-     module: cs_securitygroup
-     name: "{{ k8s_security_group_name }}" 
-     description: k8s 

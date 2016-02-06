@@ -4,10 +4,10 @@
   vars:
     ssh_key: k8sec2
     aws_region: eu-west-1
-    k8s_version: v0.11.0
+    k8s_version: v1.1.3
     k8s_num_nodes: 2
     k8s_security_group_name: k8s
-    k8s_template: ami-5b911f2c 
+    k8s_template: ami-9063d5e3 
     k8s_instance_type: m1.small
 
   roles:

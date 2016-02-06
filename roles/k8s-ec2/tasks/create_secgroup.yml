@@ -1,37 +1,38 @@
-# Create k8s security group
+# Create k8s security group and rules for etcd and k8s
 
   - name: Create k8s Security Group
     ec2_group:
-     name: "{{ k8s_security_group_name }}" 
-     description: k8s 
-     region: "{{ aws_region }}"
-     rules:
-       - proto: tcp
-         from_port: 22
-         to_port: 22
-         cidr_ip: 0.0.0.0/0
-       - proto: tcp
-         from_port: 8080
-         to_port: 8080
-         group_name: "{{ k8s_security_group_name }}"
-       - proto: udp
-         from_port: 8285
-         to_port: 8285
-         group_name: "{{ k8s_security_group_name }}"
-       - proto: tcp
-         from_port: 10250
-         to_port: 10250
-         group_name: "{{ k8s_security_group_name }}"
-       - proto: tcp
-         from_port: 7001
-         to_port: 7001
-         group_name: "{{ k8s_security_group_name }}"
-       - proto: tcp
-         from_port: 4001
-         to_port: 4001
-         group_name: "{{ k8s_security_group_name }}"
-     rules_egress:
-       - proto: tcp
-         from_port: 0
-         to_port: 65535
-         cidr_ip: 0.0.0.0/0
+      name: "{{ k8s_security_group_name }}" 
+      description: k8s 
+      region: "{{ aws_region }}"
+      rules:
+        - proto: tcp
+          from_port: 22
+          to_port: 22
+          cidr_ip: 0.0.0.0/0
+        - proto: tcp
+          from_port: 8080
+          to_port: 8080
+          group_name: "{{ k8s_security_group_name }}"
+        - proto: tcp
+          from_port: 2379
+          to_port: 2379
+          group_name: "{{ k8s_security_group_name }}"
+        - proto: tcp
+          from_port: 2380
+          to_port: 2380
+          group_name: "{{ k8s_security_group_name }}"
+        - proto: tcp
+          from_port: 7001
+          to_port: 7001
+          group_name: "{{ k8s_security_group_name }}"
+        - proto: tcp
+          from_port: 4001
+          to_port: 4001
+          group_name: "{{ k8s_security_group_name }}"
+      rules_egress:
+        - proto: tcp
+          from_port: 0
+          to_port: 65535
+          cidr_ip: 0.0.0.0/0
+

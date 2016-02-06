@@ -1,5 +1,4 @@
 [default]
-localhost ansible_python_interpreter=/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/python
 
 [nodes]
 {% for item in k8s_master.instances %}
@@ -12,4 +11,4 @@ localhost ansible_python_interpreter=/opt/local/Library/Frameworks/Python.framew
 [nodes:vars]
 ansible_ssh_user=core
 ansible_ssh_private_key_file=~/.ssh/id_rsa_{{ ssh_key }}
-ansible_python_interpreter="PATH=/home/core/bin:$PATH python"
+#ansible_python_interpreter="PATH=/home/core/bin:$PATH python"
