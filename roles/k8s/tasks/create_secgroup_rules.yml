@@ -2,7 +2,7 @@
 
 #  - name: etcd access for k8s
 #    local_action:
-#     module: cloudstack_sg_rule
+#     module: cs_securitygroup_rule
 #     name: "{{ etcd_security_group_name }}"
 #     start_port: 4001
 #     end_port: 4001
@@ -12,7 +12,7 @@
 
   - name: SSH for k8s
     local_action:
-     module: cloudstack_sg_rule
+     module: cs_securitygroup_rule
      name: "{{ k8s_security_group_name }}"
      start_port: 22
      end_port: 22
@@ -20,31 +20,31 @@
 #etcd
   - name: etcd 4001
     local_action:
-     module: cloudstack_sg_rule
-     name: "{{ k8s_security_group_name }}" 
+     module: cs_securitygroup_rule
+     name: "{{ k8s_security_group_name }}"
      start_port: 4001
      end_port: 4001
-     user_security_group: "{{ k8s_security_group_name }}" 
+     user_security_group: "{{ k8s_security_group_name }}"
 
   - name: etcd 7001
     local_action:
-     module: cloudstack_sg_rule
-     name: "{{ k8s_security_group_name }}" 
+     module: cs_securitygroup_rule
+     name: "{{ k8s_security_group_name }}"
      start_port: 7001
      end_port: 7001
-     user_security_group: "{{ k8s_security_group_name }}" 
+     user_security_group: "{{ k8s_security_group_name }}"
 
   - name: etcd 2379
     local_action:
-     module: cloudstack_sg_rule
-     name: "{{ k8s_security_group_name }}" 
+     module: cs_securitygroup_rule
+     name: "{{ k8s_security_group_name }}"
      start_port: 7001
      end_port: 7001
-     user_security_group: "{{ k8s_security_group_name }}" 
+     user_security_group: "{{ k8s_security_group_name }}"
 
   - name: etcd 2380
     local_action:
-     module: cloudstack_sg_rule
+     module: cs_securitygroup_rule
      name: "{{ k8s_security_group_name }}"
      start_port: 2380
      end_port: 2380
@@ -53,9 +53,8 @@
 #k8s api
   - name: k8s 8080
     local_action:
-     module: cloudstack_sg_rule
+     module: cs_securitygroup_rule
      name: "{{ k8s_security_group_name }}"
      start_port: 8080
      end_port: 8080
      user_security_group: "{{ k8s_security_group_name }}"
-
