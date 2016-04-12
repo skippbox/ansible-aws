@@ -1,3 +1,0 @@
-[submodule "library/cloudstack"]
-	path = library/cloudstack
-	url = https://github.com/resmo/ansible-cloudstack.git

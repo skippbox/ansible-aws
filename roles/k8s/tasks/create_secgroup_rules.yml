@@ -13,7 +13,7 @@
   - name: SSH for k8s
     local_action:
      module: cs_securitygroup_rule
-     name: "{{ k8s_security_group_name }}"
+     security_group: "{{ k8s_security_group_name }}"
      start_port: 22
      end_port: 22
 
@@ -21,7 +21,7 @@
   - name: etcd 4001
     local_action:
      module: cs_securitygroup_rule
-     name: "{{ k8s_security_group_name }}"
+     security_group: "{{ k8s_security_group_name }}"
      start_port: 4001
      end_port: 4001
      user_security_group: "{{ k8s_security_group_name }}"
@@ -29,7 +29,7 @@
   - name: etcd 7001
     local_action:
      module: cs_securitygroup_rule
-     name: "{{ k8s_security_group_name }}"
+     security_group: "{{ k8s_security_group_name }}"
      start_port: 7001
      end_port: 7001
      user_security_group: "{{ k8s_security_group_name }}"
@@ -37,7 +37,7 @@
   - name: etcd 2379
     local_action:
      module: cs_securitygroup_rule
-     name: "{{ k8s_security_group_name }}"
+     security_group: "{{ k8s_security_group_name }}"
      start_port: 7001
      end_port: 7001
      user_security_group: "{{ k8s_security_group_name }}"
@@ -45,7 +45,7 @@
   - name: etcd 2380
     local_action:
      module: cs_securitygroup_rule
-     name: "{{ k8s_security_group_name }}"
+     security_group: "{{ k8s_security_group_name }}"
      start_port: 2380
      end_port: 2380
      user_security_group: "{{ k8s_security_group_name }}"
@@ -54,7 +54,7 @@
   - name: k8s 8080
     local_action:
      module: cs_securitygroup_rule
-     name: "{{ k8s_security_group_name }}"
+     security_group: "{{ k8s_security_group_name }}"
      start_port: 8080
      end_port: 8080
      user_security_group: "{{ k8s_security_group_name }}"
