@@ -19,18 +19,19 @@ coreos:
   fleet:
     metadata: "role=node"
   units:
+    - name: etcd2.service
+      command: start
     - name: fleet.service
       command: start
     - name: flanneld.service
       command: start
+    - name: docker.service
       drop-ins:
-        - name: 50-network-config.conf
+        - name: 40-flannel.conf
           content: |
             [Unit]
-            Requires=etcd2.service
-            [Service]
-            ExecStartPre=/usr/bin/etcdctl set /coreos.com/network/config '{"Network":"10.244.0.0/16", "Backend": {"Type": "vxlan"}}'
-    - name: docker.service
+            Requires=flanneld.service
+            After=flanneld.service
       command: start
     - name: setup-network-environment.service
       command: start

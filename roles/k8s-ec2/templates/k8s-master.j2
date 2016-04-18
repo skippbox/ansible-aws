@@ -66,6 +66,12 @@ coreos:
             [Service]
             ExecStartPre=/usr/bin/etcdctl set /coreos.com/network/config '{"Network":"10.244.0.0/16", "Backend": {"Type": "vxlan"}}'
     - name: docker.service
+      drop-ins:
+        - name: 40-flannel.conf
+          content: |
+            [Unit]
+            Requires=flanneld.service
+            After=flanneld.service
       command: start
     - name: kube-apiserver.service
       command: start
@@ -89,11 +95,10 @@ coreos:
         --allow-privileged=true \
         --insecure-bind-address=0.0.0.0 \
         --insecure-port=8080 \
-        --kubelet-https=true \
         --secure-port=6443 \
         --service-cluster-ip-range=10.100.0.0/16 \
         --etcd-servers=http://127.0.0.1:2379 \
-        --public-address-override=${DEFAULT_IPV4} \
+        --bind-address=0.0.0.0 \
         --logtostderr=true
         Restart=always
         RestartSec=10
@@ -110,6 +115,7 @@ coreos:
         ExecStartPre=/usr/bin/chmod +x /opt/bin/kube-controller-manager
         ExecStart=/opt/bin/kube-controller-manager \
         --service-account-private-key-file=/opt/bin/kube-serviceaccount.key \
+        --root-ca-file=/var/run/kubernetes/apiserver.crt \
         --master=127.0.0.1:8080 \
         --logtostderr=true
         Restart=always
