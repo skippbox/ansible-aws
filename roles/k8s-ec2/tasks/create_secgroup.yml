@@ -30,7 +30,15 @@
           from_port: 4001
           to_port: 4001
           group_name: "{{ k8s_security_group_name }}"
+        - proto: udp
+          from_port: 8472
+          to_port: 8472
+          group_name: "{{ k8s_security_group_name }}"
       rules_egress:
+        - proto: udp
+          from_port: 8472
+          to_port: 8472
+          group_name: "{{ k8s_security_group_name }}"
         - proto: tcp
           from_port: 0
           to_port: 65535
